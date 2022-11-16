@@ -8,7 +8,7 @@ btnn.addEventListener("click",() => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '6e1aad90b0mshecd4198a099aa6bp1700f7jsn188f5edd4f42',
+            'X-RapidAPI-Key': 'ca0d916c0dmsh2c7e31c8d06c774p11d0e2jsn7e760bf3bc32',
             'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
         }
     }
@@ -19,34 +19,57 @@ btnn.addEventListener("click",() => {
         .then((data) => {
     
     
-
+                console.log(data.response)
     
             
 
             let affichage =`<ul>`
             let age =`<ul>`
+            let nationality=`<ul>`
+            let weight=`<ul>`
             let im =`<ul>`
-    for( let x of data.response)
+            let team = `<ul>`
+            let logo = `<ul>`
+            
+
+       for( let x of data.response)
     {
         let input = document.querySelector("#container3");
          if(input.value === x.player.name)
          {
-            console.log(x.player.name)
             affichage = `<strong>${x.player.name}</strong>`
-            age = `<strong>${x.player.age}</strong>`
+            weight = `<strong>${x.player.weight}</strong>`
+            age = `<strong>${x.player.age} ans</strong>`
+            nationality = `<strong>${x.player.nationality}</strong>`
             im = x.player.photo
+         } 
+         
+         else(input.value === x.statistics.name)
+         {
+            team = `<strong>${x.statistics[0].team.name}</strong>`
+            logo = x.statistics[0].team.logo
+
+
          }
       
     }
     affichage +=`</ul>`
     document.querySelector("#namme").innerHTML = affichage;
     document.querySelector("#age").innerHTML = age;
+    document.querySelector("#weight").innerHTML = weight;
+    document.querySelector("#nationality").innerHTML = nationality;
+    document.querySelector("#team").innerHTML = team;
     document.querySelector("#img").src = im;
+    document.querySelector("#img2").src = logo;
     
     
     
     
         })
+
+
+
+        
 
 //--------------
 
